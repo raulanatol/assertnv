@@ -32,7 +32,8 @@ prepare_folder() {
 
 publish() {
   echo "Publish $1"
-  npm publish "$1"
+  npm version "$1"
+  npm publish --access public
 }
 
 NEW_VERSION=$1
