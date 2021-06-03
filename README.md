@@ -1,14 +1,35 @@
-# Typescript template
+# Assert node version
 
-- typescript
-- esbuild
-- eslint
-- jest
-- actions
+Assert is the node version it's correct in your repositories
 
-## Getting started
+## How to install?
 
+```shell
+npm install -g assertnv
 ```
-make init
-make
+
+Or if you don't like install
+
+```shell
+npx assertnv
+```
+
+## How to use
+
+To create a repository configuration (only the first time in your repo):
+
+```shell
+assertnv init
+```
+
+## How to check
+
+```shell
+assertnv
+```
+
+or
+
+```shell
+assertnv check
 ```

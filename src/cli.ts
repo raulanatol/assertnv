@@ -1,4 +1,8 @@
 #!/usr/bin/env node
-import { add } from './main';
+import { checkIfLastVersion, executeAction } from './main';
+import { processArguments } from './prompt';
 
-console.log('Hello World', add(2, 3));
+checkIfLastVersion();
+
+const action = processArguments(process.argv[2]);
+executeAction(action);
