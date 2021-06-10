@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import { assertNodeVersion, assertNPMVersion, assertYarnVersion, fileExists, getPackageJSON, initializeNPM, initializeYarn } from './utils';
 import { Engine, notInitializedError, selectEnginesToCheck } from './prompt';
 
-export const validActions = <const>['check', 'init', 'help'];
+export const validActions = <const>['check', 'init', 'help', 'version'];
 export type Action = typeof validActions[number];
 
 const assertNPM = async () => {
@@ -121,7 +121,8 @@ export const check = async () => {
 };
 
 export const help = () => {
-  console.log(chalk.bold.green('\nassertnv'));
+  const pkg = require('../package.json');
+  console.log(chalk.bold.green(`${pkg.name} v${pkg.version}`));
   console.log(chalk('\nUsage:\n'));
   console.log(chalk('$ assertnv'), chalk.blue('<command>\n'));
   console.log('\n$', chalk('assertnv'), chalk.green('init\n'));
@@ -130,10 +131,15 @@ export const help = () => {
   console.log(chalk('Checks the engines\n'));
 };
 
+export const version = () => {
+  const pkg = require('../package.json');
+  console.log(chalk.bold.green(`${pkg.name} v${pkg.version}`));
+};
+
 export const checkIfLastVersion = () => {
   const pkg = require('../package.json');
   updateNotifier({ pkg }).notify({ isGlobal: true });
 };
 
 export const executeAction = (action: Action) =>
-  ({ check, help, init })[action]();
+  ({ check, help, init, version })[action]();
