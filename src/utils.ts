@@ -58,7 +58,7 @@ const getCurrentYarnVersion = async () => {
 
 export const initializeNPM = async () => {
   const npmVersion = await getCurrentNPMVersion();
-  const version = process.version;
+  const version = process.version.replace('v', '');
   fs.writeFileSync('./.nvmrc', version);
   const pkg = getPackageJSON();
   pkg.engines = {
